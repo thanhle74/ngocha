@@ -10,47 +10,125 @@
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <style>
     body {
-      font-size: 16px;
+      font-size: 6rem;
       font-family: "Great Vibes", cursive;
       font-weight: 400;
       font-style: normal;
-      background-image: url("./ngocha.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
       padding: 0;
       margin: 0;
       color: #fff;
+      position: relative;
+      background-color: #f4aeba;
+      @media only screen and (max-width: 767px) {
+        font-size: 2rem;
+      }
+    }
+    #myAudio {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .container {
+      background-image: url("./ngocha.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .main {
+      background-color: #f4aeba7d;
+      width: 100%;
+    }
+    #text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    /* CSS */
+    .button-34 {
+      background: #5e5df0;
+      border-radius: 999px;
+      box-shadow: #5e5df0 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+        NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+        EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto,
+        "Helvetica Neue", "Noto Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
     }
   </style>
   <body>
-
-    <audio controls autoplay id="myAudio">
-      <source src="demo.mp3" type="audio/mpeg" />
-    </audio>
-
+    <!-- HTML !-->
     <div class="container">
-      <div id="text"></div>
+      <div class="main">
+        <div id="text"></div>
+        <div id="myAudio">
+          <button class="button-34" role="button">Hà Lê Ngọc Hà</button>
+          <audio id="audio" src="demo.mp3"></audio>
+        </div>
+      </div>
     </div>
-    <script>
 
-      const text =
-        "My baby love you so much forever you and I. " +
-        "I love you oh! I love you so much forever you and I.";
+    <script type="text/javascript">
+      $("#text").hide();
+      $(window).resize(function () {
+        action();
+      });
+      $(document).ready(function () {
+        action();
+      });
 
-      const textContainer = document.getElementById("text");
-
-      let index = 0;
-      function displayText() {
-        textContainer.textContent += text[index];
-        index++;
-        if (index < text.length) {
-          setTimeout(displayText, 100);
-        }
+      function action() {
+        $("#myAudio").click(function () {
+          $("#audio")[0].play();
+          $("#text").show();
+          $(this).hide();
+          $("body").css("background-image", 'url("./ngocha.jpg")');
+          runText();
+          var height = window.innerHeight;
+          $(".main").css("height", height);
+        });
       }
-      displayText();
+
+      function runText() {
+        const text =
+          "My baby love you so much forever you and I. " +
+          "I love you oh! I love you so much forever you and I.";
+
+        const textContainer = document.getElementById("text");
+
+        let index = 0;
+        function displayText() {
+          textContainer.textContent += text[index];
+          index++;
+          if (index < text.length) {
+            setTimeout(displayText, 100);
+          }
+        }
+        displayText();
+      }
     </script>
   </body>
 </html>
