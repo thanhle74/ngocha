@@ -1,0 +1,134 @@
+/* CSS */
+body {
+    font-size: 6rem;
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    position: relative;
+    background-color: #f4aeba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: 767px) {
+        font-size: 2rem;
+    }
+}
+#myAudio {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.container {
+    background-image: url("./ngocha.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main {
+    background-color: #f4aeba7d;
+    width: 100%;
+}
+
+#text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button-34,a {
+    background: #5e5df0;
+    border-radius: 999px;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+        NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+        EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+        "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    text-decoration: none;
+    &.active{
+        display: none;
+    }
+}
+
+.heart {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: heartAnimation 3s infinite ease-out;
+    z-index: -1;
+
+    &::before {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background-color: #c9356c;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background-color: #c9356c;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.heart.active {
+    display: none;
+}
+
+@keyframes heartAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+    }
+}
