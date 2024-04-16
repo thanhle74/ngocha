@@ -28,6 +28,9 @@
       color: #fff;
       position: relative;
       background-color: #f4aeba;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       @media only screen and (max-width: 767px) {
         font-size: 2rem;
       }
@@ -78,9 +81,60 @@
       word-break: break-word;
       border: 0;
     }
+    .heart {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      animation: heartAnimation 3s infinite ease-out;
+      z-index: -1;
+    }
+    .box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .heart.active
+    {
+      display: none;
+    }
+    .heart::before,
+    .heart::after {
+      position: absolute;
+      content: "";
+      left: 50px;
+      top: 0;
+      width: 50px;
+      height: 80px;
+      background-color: #c9356c; /* Màu đỏ */
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes heartAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+      }
+    }
   </style>
   <body>
     <!-- HTML !-->
+    <div class="heart active"></div>
     <div class="container">
       <div class="main">
         <div id="text"></div>
@@ -109,8 +163,26 @@
           runText();
           var height = window.innerHeight;
           $(".main").css("height", height);
+          $('.heart').removeClass('active');
         });
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+          const container = document.querySelector("body");
+          const heart = document.querySelector(".heart");
+
+          setInterval(function () {
+            const newHeart = heart.cloneNode(true);
+            newHeart.style.left =
+              Math.random() * (container.offsetWidth - 150) + "px";
+            newHeart.style.top =
+              Math.random() * (container.offsetHeight - 150) + "px";
+            container.appendChild(newHeart);
+            setTimeout(function () {
+              container.removeChild(newHeart);
+            }, 30000); // Thời gian tồn tại của trái tim mới (ms)
+          }, 200); // Thời gian giữa các lần tạo trái tim mới (ms)
+        });
 
       function runText() {
         const text =
