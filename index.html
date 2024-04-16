@@ -13,43 +13,29 @@
   </head>
   <style>
     body {
-      font-size: 8rem;
+      font-size: 16px;
       font-family: "Great Vibes", cursive;
       font-weight: 400;
       font-style: normal;
-      background-image: url('./ngocha.jpg');
+      background-image: url("./ngocha.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       padding: 0;
       margin: 0;
       color: #fff;
     }
-    .container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 999;
-    }
-    .main{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: #f7077652;
-    }
   </style>
   <body>
-    <audio controls autoplay id="audioPlayer" style="display: none;">
-      <source src="demo.mp3" type="audio/mp3" />
-      demo
-    </audio>
-    <div class="main">
 
-    </div>
+    <audio controls autoplay id="myAudio">
+      <source src="demo.mp3" type="audio/mpeg" />
+    </audio>
+
     <div class="container">
-        <div id="text"></div>
-      </div>
+      <div id="text"></div>
+    </div>
     <script>
+
       const text =
         "My baby love you so much forever you and I. " +
         "I love you oh! I love you so much forever you and I.";
